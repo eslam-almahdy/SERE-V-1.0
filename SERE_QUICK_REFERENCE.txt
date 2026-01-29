@@ -1,0 +1,96 @@
+# SERE - Quick Reference Guide
+
+## 📋 FILES TO UPLOAD TO STREAMLIT
+
+### ✅ REQUIRED (5 files):
+1. **sere_core.py**
+2. **sere_dashboard.py** ⭐ **(MAIN FILE)**
+3. **sere_database.py**
+4. **sere_validation.py**
+5. **requirements.txt**
+
+---
+
+## 🚀 STREAMLIT CLOUD SETTINGS
+
+**Main file path:** `sere_dashboard.py`  
+**Python version:** 3.11+  
+**Repository:** your-username/sere-risk-engine
+
+---
+
+## 👥 USER ROLES
+
+### Forecast Team
+- Submit probabilistic forecasts (P10/P50/P90)
+- Validate data quality
+- View quality scores
+
+### Management
+- Execute decision engine
+- View risk metrics (CVaR, VaR)
+- See loss distributions
+- Approve actions
+
+---
+
+## 📊 KEY METRICS
+
+- **CVaR (95%)**: Expected loss in worst 5% of cases
+- **VaR (95%)**: 95th percentile loss
+- **Risk Energy**: Expected cost + 2×CVaR
+- **Residual**: Net load - Hedge position
+
+---
+
+## 🎯 RISK STATES
+
+- **HOLD**: CVaR within limits ✅
+- **WATCH**: Approaching limits 👁️
+- **ACTION**: CVaR exceeds limit ⚠️
+- **CRITICAL**: Extreme risk 🚨
+
+---
+
+## ⚡ QUICK TEST
+
+```bash
+# Test core
+python sere_core.py
+
+# Test dashboard
+streamlit run sere_dashboard.py
+```
+
+---
+
+## 📈 FEATURES
+
+- ✅ 10,000+ Monte Carlo scenarios
+- ✅ VaR & CVaR calculation
+- ✅ Tail risk analysis
+- ✅ Loss distribution plots
+- ✅ Multi-user interface
+- ✅ Full explainability
+- ✅ Governance compliance
+- ✅ Backtesting support
+- ✅ Stress testing
+- ✅ SQLite database
+- ✅ Complete audit trail
+
+---
+
+## 🔐 DEFAULT RISK LIMITS
+
+- CVaR Limit: €1,000
+- VaR Limit: €800
+- Confidence: 95%
+- Hold: ±2 MW
+- Watch: ±5 MW
+- Action: ±10 MW
+
+---
+
+## 📞 SUPPORT
+
+See **SERE_README.md** for complete documentation
