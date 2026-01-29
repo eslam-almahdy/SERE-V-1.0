@@ -1,0 +1,1648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERE User Manual - Professional Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm 2cm;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            color: #1a1a1a;
+            background: white;
+            font-size: 11pt;
+        }
+        
+        /* Cover page styling */
+        .cover-page {
+            page-break-after: always;
+            text-align: center;
+            padding-top: 200px;
+        }
+        
+        .cover-title {
+            font-size: 36pt;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .cover-subtitle {
+            font-size: 18pt;
+            color: #34495e;
+            margin-bottom: 40px;
+        }
+        
+        .cover-details {
+            font-size: 12pt;
+            color: #7f8c8d;
+            margin-top: 60px;
+        }
+        
+        /* Header styling */
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #34495e;
+            padding-bottom: 12px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-size: 24pt;
+            font-weight: bold;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+        
+        h1:first-of-type {
+            page-break-before: avoid;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 8px;
+            font-size: 16pt;
+            font-weight: bold;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 13pt;
+            font-weight: bold;
+            page-break-after: avoid;
+        }
+        
+        h4 {
+            color: #4a5568;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            font-size: 11pt;
+            font-weight: bold;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        /* Table styling - Professional */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            page-break-inside: avoid;
+            border: 1px solid #2c3e50;
+        }
+        
+        th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #2c3e50;
+            font-size: 10pt;
+        }
+        
+        td {
+            padding: 10px 15px;
+            border: 1px solid #bdc3c7;
+            font-size: 10pt;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Code styling */
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 9pt;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+        }
+        
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 3px solid #34495e;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #2c3e50;
+            border: none;
+        }
+        
+        /* List styling */
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+        
+        /* Horizontal rule */
+        hr {
+            border: none;
+            border-top: 1px solid #bdc3c7;
+            margin: 30px 0;
+        }
+        
+        /* Professional callout boxes */
+        .note {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 12px 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        .warning {
+            background-color: #fef5e7;
+            border-left: 4px solid #f39c12;
+            padding: 12px 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        .important {
+            background-color: #fadbd8;
+            border-left: 4px solid #e74c3c;
+            padding: 12px 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        .success {
+            background-color: #d5f4e6;
+            border-left: 4px solid #27ae60;
+            padding: 12px 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        /* Header and footer for pages */
+        @page {
+            @top-right {
+                content: "SERE User Manual v1.0";
+                font-size: 9pt;
+                color: #7f8c8d;
+            }
+            @bottom-center {
+                content: counter(page);
+                font-size: 9pt;
+                color: #7f8c8d;
+            }
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                max-width: 100%;
+                padding: 15px;
+                font-size: 10pt;
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+            
+            table, pre, .note, .warning, .important, .success {
+                page-break-inside: avoid;
+            }
+            
+            tr {
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: #2c3e50;
+                text-decoration: none;
+            }
+            
+            /* Avoid breaking lists */
+            ul, ol {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Footer styling */
+        .document-footer {
+            text-align: center;
+            color: #7f8c8d;
+            margin-top: 60px;
+            padding: 25px 0;
+            border-top: 2px solid #bdc3c7;
+            font-size: 10pt;
+            page-break-before: avoid;
+        }
+        
+        .document-footer p {
+            margin: 5px 0;
+        }
+        
+        /* Status indicators (replacing emojis) */
+        .status-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .status-check {
+            background-color: #d5f4e6;
+            color: #27ae60;
+        }
+        
+        .status-warning {
+            background-color: #fef5e7;
+            color: #f39c12;
+        }
+        
+        .status-error {
+            background-color: #fadbd8;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page">
+        <div class="cover-title">SERE</div>
+        <div class="cover-subtitle">Sustainable Exergy Risk Engine</div>
+        <div class="cover-subtitle" style="font-size: 16pt; margin-top: 40px;">User Manual and Technical Guide</div>
+        <div class="cover-details">
+            <p><strong>Document Version:</strong> 1.0</p>
+            <p><strong>Publication Date:</strong> January 2026</p>
+            <p><strong>Classification:</strong> Internal Use</p>
+        </div>
+    </div>
+    
+    <h1 id="sere-user-manual">SERE User Manual</h1>
+
+<h2 id="sustainable-exergy-risk-engine-complete-guide-for-all-users">Sustainable Exergy Risk Engine - Complete Guide for All Users</h2>
+
+<p><strong>Version 1.0</strong> | <strong>January 2026</strong></p>
+
+<hr />
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ol>
+<li><a href="#what-is-sere">What is SERE?</a></li>
+<li><a href="#who-should-use-this-manual">Who Should Use This Manual?</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#understanding-the-basics">Understanding the Basics</a></li>
+<li><a href="#for-forecast-team-users">For Forecast Team Users</a></li>
+<li><a href="#for-management-users">For Management Users</a></li>
+<li><a href="#understanding-the-results">Understanding the Results</a></li>
+<li><a href="#common-terms-explained">Common Terms Explained</a></li>
+<li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+
+<hr />
+
+<h2 id="what-is-sere">What is SERE?</h2>
+
+<h3 id="in-simple-terms">In Simple Terms</h3>
+
+<p><strong>SERE</strong> (Sustainable Exergy Risk Engine) is a smart decision-making tool that helps energy companies avoid costly mistakes when buying and selling electricity.</p>
+
+<p>Think of it like a weather forecast for your business:<br />
+- <strong>Weather forecast</strong> tells you if it will rain -> You decide to bring an umbrella<br />
+- <strong>SERE</strong> tells you if prices might spike or supply might fail -> You decide to buy backup power or adjust contracts</p>
+
+<h3 id="what-does-it-do">What Does It Do?</h3>
+
+<p>SERE helps you answer three critical questions:</p>
+
+<ol>
+<li><p><strong>What could go wrong?</strong> (Risk Analysis)</p>
+
+<ul>
+<li>Will we have enough power tomorrow?</li>
+<li>Could prices suddenly spike?</li>
+<li>What's our worst-case scenario?</li>
+</ul></li>
+<li><p><strong>How much could it cost us?</strong> (Financial Impact)</p>
+
+<ul>
+<li>If things go wrong, how much money are we risking?</li>
+<li>What's the maximum loss we might face?</li>
+</ul></li>
+<li><p><strong>What should we do about it?</strong> (Action Recommendations)</p>
+
+<ul>
+<li>Should we buy more power now?</li>
+<li>Should we use our backup storage?</li>
+<li>Should we wait and do nothing?</li>
+</ul></li>
+</ol>
+
+<h3 id="why-is-this-important">Why Is This Important?</h3>
+
+<p><strong>Real-world scenario:</strong><br />
+- Your company promised to deliver 100 MW of power tomorrow<br />
+- Your solar panels might only produce 20 MW (cloudy day expected)<br />
+- You need to buy the remaining 80 MW from the market<br />
+- But what if the price suddenly jumps to €300/MWh?<br />
+- <strong>SERE calculates this risk and tells you the best action to take TODAY</strong></p>
+
+<hr />
+
+<h2 id="who-should-use-this-manual">Who Should Use This Manual?</h2>
+
+<h3 id="this-manual-is-for-you-if-you-are">This manual is for YOU if you are:</h3>
+
+<ul>
+<li><strong>Forecast Team Member</strong>: You input predictions about tomorrow's power supply and demand</li>
+<li><strong>Management/Trader</strong>: You make decisions about buying, selling, or adjusting positions</li>
+<li><strong>Risk Manager</strong>: You monitor and control financial exposure</li>
+<li><strong>Energy Analyst</strong>: You analyze market conditions and make recommendations</li>
+<li><strong>Complete Beginner</strong>: You have ZERO experience with energy trading or risk systems</li>
+</ul>
+
+<h3 id="no-prior-knowledge-required">No Prior Knowledge Required</h3>
+
+<p>You do NOT need to know:<br />
+- Programming or coding<br />
+- Advanced statistics or mathematics<br />
+- Energy trading jargon<br />
+- Risk management theory</p>
+
+<p>We'll explain everything in plain language!</p>
+
+<hr />
+
+<h2 id="getting-started">Getting Started</h2>
+
+<h3 id="step-1-opening-sere">Step 1: Opening SERE</h3>
+
+<ol>
+<li><strong>Open your web browser</strong> (Chrome, Firefox, Edge - any browser works)</li>
+<li><strong>Type this address:</strong> <code>http://localhost:8502</code> (or the address your IT team provided)</li>
+<li><strong>Press Enter</strong></li>
+</ol>
+
+<p><strong>What you'll see:</strong><br />
+- A purple/blue header with "SERE" title<br />
+- Three login buttons: "Forecast Team", "Management", "Administrator"</p>
+
+<h3 id="step-2-choosing-your-role">Step 2: Choosing Your Role</h3>
+
+<p>Click the button that matches your job:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Button</th>
+  <th>Who Should Click</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><em>* Forecast Team</em>*</td>
+  <td>If you provide weather forecasts, demand predictions, or market price estimates</td>
+</tr>
+<tr>
+  <td><em>* Management</em>*</td>
+  <td>If you make trading decisions, execute orders, or manage risk</td>
+</tr>
+<tr>
+  <td><em>* Administrator</em>*</td>
+  <td>System admin only (most users don't need this)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Important:</strong> Choose the role that matches your actual job responsibilities!</p>
+
+<hr />
+
+<h2 id="understanding-the-basics">Understanding the Basics</h2>
+
+<h3 id="the-power-balance-equation">The Power Balance Equation</h3>
+
+<p>Every hour, your company must balance:</p>
+
+<pre><code>SUPPLY = DEMAND
+
+Where:
+Supply = Solar (PV) + Wind + Purchased Power + Storage
+Demand = Customer Needs + Contracts
+</code></pre>
+
+<p><strong>If Supply &lt; Demand:</strong> You face a <strong>SHORTAGE</strong> -> Must buy expensive emergency power<br />
+<strong>If Supply &gt; Demand:</strong> You face a <strong>SURPLUS</strong> -> Must sell at low prices or waste power</p>
+
+<p><strong>SERE's job:</strong> Predict these imbalances BEFORE they happen and recommend actions.</p>
+
+<h3 id="key-concepts-for-beginners">Key Concepts for Beginners</h3>
+
+<h4 id="1-probabilistic-forecast-p10-p50-p90">1. <strong>Probabilistic Forecast</strong> (P10, P50, P90)</h4>
+
+<p>Imagine tomorrow's solar output could be anywhere between 10 MW and 30 MW. We express this as:</p>
+
+<ul>
+<li><strong>P10 = 12 MW</strong>: "10% chance it will be THIS LOW or lower" (Worst case)</li>
+<li><strong>P50 = 20 MW</strong>: "50% chance it will be around THIS" (Most likely)</li>
+<li><strong>P90 = 28 MW</strong>: "90% chance it will be THIS HIGH or lower" (Best case)</li>
+</ul>
+
+<p><strong>Simple analogy:</strong><br />
+- P10 = "Very cloudy day"<br />
+- P50 = "Normal day"<br />
+- P90 = "Very sunny day"</p>
+
+<h4 id="2-risk-metrics">2. <strong>Risk Metrics</strong></h4>
+
+<ul>
+<li><strong>Expected Loss</strong>: Average amount you might lose (like average rainfall)</li>
+<li><strong>VaR (Value at Risk)</strong>: "95% of the time, losses won't exceed THIS amount"</li>
+<li><strong>CVaR (Conditional VaR)</strong>: "If things go really bad (worst 5% of cases), expect to lose THIS much"</li>
+</ul>
+
+<p><strong>Example:</strong><br />
+- Expected Loss = €500 -> "On average, you'll lose €500"<br />
+- VaR (95%) = €2,000 -> "95% of the time, losses stay under €2,000"<br />
+- CVaR (95%) = €3,500 -> "In worst-case scenarios (5% of times), you lose €3,500 on average"</p>
+
+<h4 id="3-risk-states">3. <strong>Risk States</strong></h4>
+
+<p>SERE classifies every situation into four levels:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Risk State</th>
+  <th>Meaning</th>
+  <th>Traffic Light</th>
+  <th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>HOLD</strong></td>
+  <td>Very safe</td>
+  <td>Green</td>
+  <td>Do nothing - situation is stable</td>
+</tr>
+<tr>
+  <td><strong>WATCH</strong></td>
+  <td>Monitor closely</td>
+  <td>Yellow</td>
+  <td>Be alert - potential risk building</td>
+</tr>
+<tr>
+  <td><strong>ACTION</strong></td>
+  <td>Take action now</td>
+  <td>Orange</td>
+  <td>Act now to avoid losses</td>
+</tr>
+<tr>
+  <td><strong>CRITICAL</strong></td>
+  <td>Emergency</td>
+  <td>Red</td>
+  <td>Immediate action required!</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="4-mitigation-actions">4. <strong>Mitigation Actions</strong></h4>
+
+<p>These are things you can DO to reduce risk:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Action</th>
+  <th>Simple Explanation</th>
+  <th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Intraday Purchase</strong></td>
+  <td>Buy power from the market NOW</td>
+  <td>When you expect shortage</td>
+</tr>
+<tr>
+  <td><strong>Intraday Sale</strong></td>
+  <td>Sell excess power NOW</td>
+  <td>When you have too much</td>
+</tr>
+<tr>
+  <td><strong>Demand Flexibility</strong></td>
+  <td>Ask customers to use less power</td>
+  <td>During expensive hours</td>
+</tr>
+<tr>
+  <td><strong>Storage Charging</strong></td>
+  <td>Put power into batteries</td>
+  <td>When prices are low</td>
+</tr>
+<tr>
+  <td><strong>Storage Discharging</strong></td>
+  <td>Use battery power</td>
+  <td>When prices are high</td>
+</tr>
+<tr>
+  <td><strong>Hedge Adjustment</strong></td>
+  <td>Change your forward contracts</td>
+  <td>To lock in prices</td>
+</tr>
+<tr>
+  <td><strong>Curtailment</strong></td>
+  <td>Shut down non-critical loads</td>
+  <td>In extreme emergencies</td>
+</tr>
+<tr>
+  <td><strong>Emergency Response</strong></td>
+  <td>Activate backup plans</td>
+  <td>Critical situations only</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="for-forecast-team-users">For Forecast Team Users</h2>
+
+<h3 id="your-role">Your Role</h3>
+
+<p>You are the <strong>eyes</strong> of the system. Your job is to predict what will happen tomorrow so Management can make smart decisions today.</p>
+
+<h3 id="step-by-step-submitting-a-forecast">Step-by-Step: Submitting a Forecast</h3>
+
+<h4 id="step-1-log-in">Step 1: Log In</h4>
+
+<ol>
+<li>Open SERE in your browser</li>
+<li>Click <strong>" Forecast Team"</strong> button</li>
+<li>You'll see the main forecast input screen</li>
+</ol>
+
+<h4 id="step-2-enter-demand-forecast">Step 2: Enter Demand Forecast</h4>
+
+<p><strong>What is this?</strong> How much power your customers will need tomorrow.</p>
+
+<ol>
+<li>Look at the <strong>"Demand Forecast (MW)"</strong> section</li>
+<li><p>Enter three numbers:</p>
+
+<ul>
+<li><strong>P10 (Pessimistic)</strong>: Lowest demand you expect</li>
+<li><p><em>Example: 85 MW</em> -> "Customers will use at least this much"</p></li>
+<li><p><strong>P50 (Expected)</strong>: Most likely demand</p></li>
+<li><p><em>Example: 100 MW</em> -> "Probably around this"</p></li>
+<li><p><strong>P90 (Optimistic)</strong>: Highest demand you expect</p></li>
+<li><em>Example: 115 MW</em> -> "Could go this high"</li>
+</ul></li>
+</ol>
+
+<p><strong>How to estimate:</strong><br />
+- Check historical data for similar days (same weekday, season, weather)<br />
+- Look at weather forecasts (hot/cold days = higher demand)<br />
+- Consider special events (holidays, festivals)</p>
+
+<h4 id="step-3-enter-pv-solar-generation-forecast">Step 3: Enter PV (Solar) Generation Forecast</h4>
+
+<p><strong>What is this?</strong> How much power your solar panels will produce tomorrow.</p>
+
+<ol>
+<li>Find <strong>"PV Generation Forecast (MW)"</strong> section</li>
+<li><p>Enter three numbers:</p>
+
+<ul>
+<li><strong>P10</strong>: Worst case (very cloudy)</li>
+<li><p><em>Example: 12 MW</em></p></li>
+<li><p><strong>P50</strong>: Most likely (normal weather)</p></li>
+<li><p><em>Example: 20 MW</em></p></li>
+<li><p><strong>P90</strong>: Best case (very sunny)</p></li>
+<li><em>Example: 28 MW</em></li>
+</ul></li>
+</ol>
+
+<p><strong>Tips:</strong><br />
+- Check weather forecasts (cloud cover, temperature)<br />
+- Consider season (winter = less sun, summer = more sun)<br />
+- Account for panel efficiency and maintenance</p>
+
+<h4 id="step-4-enter-wind-generation-forecast">Step 4: Enter Wind Generation Forecast</h4>
+
+<p><strong>What is this?</strong> How much power your wind turbines will produce tomorrow.</p>
+
+<ol>
+<li>Find <strong>"Wind Generation Forecast (MW)"</strong> section</li>
+<li><p>Enter three numbers:</p>
+
+<ul>
+<li><strong>P10</strong>: Low wind scenario</li>
+<li><p><em>Example: 18 MW</em></p></li>
+<li><p><strong>P50</strong>: Normal wind</p></li>
+<li><p><em>Example: 30 MW</em></p></li>
+<li><p><strong>P90</strong>: High wind scenario</p></li>
+<li><em>Example: 42 MW</em></li>
+</ul></li>
+</ol>
+
+<p><strong>Tips:</strong><br />
+- Check wind speed forecasts from meteorology services<br />
+- Higher wind speed = more power (but too high = turbines shut down!)<br />
+- Consider seasonal patterns</p>
+
+<h4 id="step-5-enter-market-prices">Step 5: Enter Market Prices</h4>
+
+<p><strong>What is this?</strong> How much it costs to buy or sell power in different markets.</p>
+
+<ol>
+<li><p><strong>Day-Ahead Price (€/MWh)</strong>: Tomorrow's fixed price</p>
+
+<ul>
+<li><em>Example: 100€/MWh</em></li>
+<li>Where to find: Check your day-ahead market results</li>
+</ul></li>
+<li><p><strong>Intraday Bid (€/MWh)</strong>: Price to BUY power today</p>
+
+<ul>
+<li><em>Example: 150€/MWh</em></li>
+<li>Usually HIGHER than day-ahead (you pay premium for last-minute buying)</li>
+</ul></li>
+<li><p><strong>Intraday Ask (€/MWh)</strong>: Price to SELL power today</p>
+
+<ul>
+<li><em>Example: 140€/MWh</em></li>
+<li>Usually LOWER than bid (you get less for last-minute selling)</li>
+</ul></li>
+<li><p><strong>ReBAP+ (Shortage Penalty) (€/MWh)</strong>: Fine if you deliver too little power</p>
+
+<ul>
+<li><em>Example: 300€/MWh</em></li>
+<li>This is EXPENSIVE! Avoid shortages!</li>
+</ul></li>
+<li><p><strong>ReBAP- (Surplus Penalty) (€/MWh)</strong>: Penalty if you deliver too much power</p>
+
+<ul>
+<li><em>Example: -50€/MWh</em></li>
+<li>Negative number = you pay or lose money</li>
+</ul></li>
+</ol>
+
+<h4 id="step-6-enter-current-hedge-position">Step 6: Enter Current Hedge Position</h4>
+
+<p><strong>What is this?</strong> How much power you've already committed to deliver through contracts.</p>
+
+<ul>
+<li><strong>Hedge Position (MW)</strong>: Your current obligation
+<ul>
+<li><em>Example: 50 MW</em> -> "You promised to deliver 50 MW"</li>
+</ul></li>
+</ul>
+
+<h4 id="step-7-set-confidence-level">Step 7: Set Confidence Level</h4>
+
+<p><strong>What is this?</strong> How confident are you in your forecast?</p>
+
+<ul>
+<li>Slide the bar from 0% to 100%</li>
+<li><strong>80%</strong> = "Pretty confident, normal conditions"</li>
+<li><strong>60%</strong> = "Uncertain, weather is unpredictable"</li>
+<li><strong>95%</strong> = "Very confident, stable conditions"</li>
+</ul>
+
+<h4 id="step-8-add-notes-optional">Step 8: Add Notes (Optional)</h4>
+
+<p>Write any important context:<br />
+- <em>"Storm expected in the afternoon"</em><br />
+- <em>"Holiday weekend - lower demand expected"</em><br />
+- <em>"Solar panel maintenance scheduled"</em></p>
+
+<h4 id="step-9-validate-your-forecast">Step 9: Validate Your Forecast</h4>
+
+<ol>
+<li>Click the <strong>" VALIDATE FORECAST"</strong> button (center of screen)</li>
+<li>SERE will check your data for errors:</li>
+</ol>
+
+<p><em>* If validation PASSES:</em>*<br />
+- You'll see green checkmark: " Validation Passed - Data looks good!"<br />
+- A new button appears: <strong>" SUBMIT FORECAST"</strong></p>
+
+<p><em>* If validation FAILS:</em>*<br />
+- You'll see red error messages explaining what's wrong<br />
+- Common errors:<br />
+ - <em>"P10 ≤ P50 ≤ P90 ordering violated"</em> -> Your numbers are in wrong order<br />
+ - <em>"Demand uncertainty too high"</em> -> Difference between P10 and P90 is too large<br />
+ - <em>"Generation cannot be negative"</em> -> You entered a negative number for solar/wind</p>
+
+<ol start="3">
+<li>Fix any errors and click Validate again</li>
+</ol>
+
+<h4 id="step-10-submit-to-management">Step 10: Submit to Management</h4>
+
+<ol>
+<li>After successful validation, click <strong>" SUBMIT FORECAST"</strong></li>
+<li>You'll see:
+<ul>
+<li>Success message</li>
+<li>Balloons animation</li>
+<li>Confirmation that Management can now see your forecast</li>
+</ul></li>
+</ol>
+
+<p><strong>Congratulations!</strong> Your forecast is submitted. Management can now use it to make decisions.</p>
+
+<h4 id="step-11-switch-to-management-view-optional">Step 11: Switch to Management View (Optional)</h4>
+
+<p>If you want to see what Management sees:</p>
+
+<ol>
+<li>Click <strong>" Switch Role"</strong> button (top right)</li>
+<li>Select <strong>" Management"</strong></li>
+<li>You'll see your submitted forecast and can execute the decision engine</li>
+</ol>
+
+<hr />
+
+<h2 id="for-management-users">For Management Users</h2>
+
+<h3 id="your-role-2">Your Role</h3>
+
+<p>You are the <strong>decision maker</strong>. Based on the Forecast Team's predictions, you decide what actions to take to minimize risk and maximize profit.</p>
+
+<h3 id="step-by-step-making-decisions">Step-by-Step: Making Decisions</h3>
+
+<h4 id="step-1-log-in-2">Step 1: Log In</h4>
+
+<ol>
+<li>Open SERE in your browser</li>
+<li>Click <strong>" Management"</strong> button</li>
+<li>You'll see the main risk control dashboard</li>
+</ol>
+
+<h4 id="step-2-check-if-forecast-is-available">Step 2: Check If Forecast Is Available</h4>
+
+<p><em>*Scenario A: Forecast Available *</em><br />
+- You'll see four tabs: " Decision Engine", " Risk Dashboard", " Loss Distribution", " Settings"<br />
+- Proceed to Step 3</p>
+
+<p><strong>Scenario B: No Forecast Available <em>*<br />
+- You'll see: " No validated forecast available from Forecast Team"<br />
+- *</em>Option 1:</strong> Wait for Forecast Team to submit data<br />
+- <strong>Option 2:</strong> Click <strong>" Load Demo Data"</strong> button to test with sample data</p>
+
+<h4 id="step-3-review-forecast-summary">Step 3: Review Forecast Summary</h4>
+
+<p>At the top of the screen, you'll see four key metrics:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Demand (P50)</strong></td>
+  <td>Expected customer demand (middle estimate)</td>
+</tr>
+<tr>
+  <td><strong>PV Generation (P50)</strong></td>
+  <td>Expected solar output</td>
+</tr>
+<tr>
+  <td><strong>Wind Generation (P50)</strong></td>
+  <td>Expected wind output</td>
+</tr>
+<tr>
+  <td><strong>Net Position</strong></td>
+  <td>Your balance (negative = shortage, positive = surplus)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example:</strong><br />
+- Demand: 100 MW ±15<br />
+- PV: 20 MW ±8<br />
+- Wind: 30 MW ±12<br />
+- Net Position: -30 MW -> "You're short by 30 MW!"</p>
+
+<h4 id="step-4-execute-the-decision-engine">Step 4: Execute the Decision Engine</h4>
+
+<ol>
+<li>Click the <strong>" EXECUTE DECISION ENGINE"</strong> button (big blue button)</li>
+<li>Wait 3-10 seconds while SERE analyzes 10,000 possible scenarios</li>
+<li>Results will appear below</li>
+</ol>
+
+<h4 id="step-5-understand-the-decision-output">Step 5: Understand the Decision Output</h4>
+
+<p>After execution, you'll see several sections:</p>
+
+<h5 id="a-risk-state-card-top">A) <strong>Risk State Card</strong> (Top)</h5>
+
+<p>This is your <strong>traffic light</strong>:</p>
+
+<pre><code> RISK STATE: HOLD
+ "No immediate action needed - situation is manageable"
+</code></pre>
+
+<p>Or:</p>
+
+<pre><code> RISK STATE: CRITICAL
+ "Immediate action required to prevent significant losses"
+</code></pre>
+
+<p><strong>What to do for each state:</strong></p>
+
+<ul>
+<li><em>* HOLD</em>*: Relax. Monitor but don't act. Risk is low.</li>
+<li><em>* WATCH</em>*: Be alert. Prepare to act if conditions worsen.</li>
+<li><em>* ACTION</em>*: Act now. Follow recommended mitigation actions.</li>
+<li><em>* CRITICAL</em>*: Emergency! Execute recommendations immediately.</li>
+</ul>
+
+<h5 id="b-risk-metrics">B) <strong>Risk Metrics</strong></h5>
+
+<p>Three key numbers that quantify your risk:</p>
+
+<pre><code>Expected Loss: €713.28
+VaR (95%): €2,630.22
+CVaR (95%): €3,505.78
+</code></pre>
+
+<p><strong>What do these mean?</strong></p>
+
+<ul>
+<li><p><strong>Expected Loss (€713)</strong>:</p>
+
+<ul>
+<li>"On average, this situation will cost us €713"</li>
+<li>This is the <strong>most likely</strong> outcome</li>
+</ul></li>
+<li><p><strong>VaR (95%) (€2,630)</strong>:</p>
+
+<ul>
+<li>"95 times out of 100, our losses won't exceed €2,630"</li>
+<li>This is your <strong>normal worst case</strong></li>
+<li>Budget for this amount in normal risk management</li>
+</ul></li>
+<li><p><strong>CVaR (95%) (€3,505)</strong>:</p>
+
+<ul>
+<li>"In the worst 5% of scenarios, we lose €3,505 on average"</li>
+<li>This is your <strong>extreme worst case</strong> (tail risk)</li>
+<li>This is what keeps you up at night!</li>
+</ul></li>
+</ul>
+
+<p><strong>Risk Budget Check:</strong><br />
+- If CVaR &gt; Your Risk Limit -> <strong>MUST ACT!</strong><br />
+- If CVaR &lt; Your Risk Limit -> You can handle this</p>
+
+<h5 id="c-recommended-actions">C) <strong>Recommended Actions</strong></h5>
+
+<p>SERE will list 1-5 specific actions ranked by effectiveness:</p>
+
+<pre><code>Recommended Actions:
+1. Intraday Purchase: 32.5 MW @ €150/MWh
+ Cost: €4,875
+ CVaR Reduction: €2,314 (saves more than it costs!)
+ Net Benefit: +€2,314
+</code></pre>
+
+<p><strong>How to read this:</strong></p>
+
+<ul>
+<li><strong>Action</strong>: What to do -> "Buy 32.5 MW in intraday market"</li>
+<li><strong>Cost</strong>: How much it costs -> €4,875</li>
+<li><strong>CVaR Reduction</strong>: How much risk it eliminates -> €2,314</li>
+<li><strong>Net Benefit</strong>: Total value -> Positive = Good action!</li>
+</ul>
+
+<p><strong>Decision Rules:</strong></p>
+
+<p><strong>DO execute if:</strong><br />
+- Net Benefit is POSITIVE (saves more than it costs)<br />
+- CVaR Reduction is LARGE (significantly lowers risk)<br />
+- Risk State is ACTION or CRITICAL</p>
+
+<p><strong>DON'T execute if:</strong><br />
+- Net Benefit is NEGATIVE (costs more than it saves)<br />
+- CVaR Reduction is SMALL (doesn't help much)<br />
+- Risk State is HOLD (no action needed)</p>
+
+<h5 id="d-confidence-factors">D) <strong>Confidence Factors</strong></h5>
+
+<p>These tell you how reliable the decision is:</p>
+
+<pre><code>Convergence: 98.5% (Good - simulation is stable)
+Sensitivity: Medium (Moderate price sensitivity)
+Forecast Quality: 80% (Good confidence)
+</code></pre>
+
+<p><strong>Interpretation:</strong></p>
+
+<ul>
+<li><strong>Convergence &gt; 95%</strong>: Trust the numbers </li>
+<li><strong>Convergence &lt; 90%</strong>: Run simulation again </li>
+<li><strong>Sensitivity = High</strong>: Small price changes = big impact</li>
+<li><strong>Sensitivity = Low</strong>: Prices matter less</li>
+<li><strong>Forecast Quality</strong>: How confident Forecast Team was</li>
+</ul>
+
+<h4 id="step-6-execute-recommended-actions">Step 6: Execute Recommended Actions</h4>
+
+<p><strong>If you agree with SERE's recommendations:</strong></p>
+
+<ol>
+<li><strong>Open your trading platform</strong> (separate system)</li>
+<li><strong>Execute the recommended trades</strong>:
+<ul>
+<li>Example: Buy 32.5 MW in intraday market at €150/MWh</li>
+</ul></li>
+<li><strong>Document the trade</strong> in your systems</li>
+<li><strong>(Optional)</strong> Come back to SERE and log that you executed it</li>
+</ol>
+
+<p><strong>If you disagree or want to wait:</strong></p>
+
+<ul>
+<li>SERE is a <strong>recommendation tool</strong>, not an auto-trader</li>
+<li>You have final decision authority</li>
+<li>Document why you didn't follow the recommendation (for audit purposes)</li>
+</ul>
+
+<h4 id="step-7-monitor-risk-dashboard">Step 7: Monitor Risk Dashboard</h4>
+
+<p>Click the <strong>" Risk Dashboard"</strong> tab to see:</p>
+
+<ol>
+<li><strong>Risk Metrics Over Time</strong>: Chart showing how CVaR evolved</li>
+<li><strong>Exposure by Component</strong>: Which factors contribute most to risk</li>
+<li><strong>Scenario Distribution</strong>: Histogram of 10,000 simulated outcomes</li>
+</ol>
+
+<p><strong>Use this to:</strong><br />
+- Understand where your risk comes from<br />
+- Identify patterns (e.g., "wind uncertainty is killing us")<br />
+- Communicate to executives</p>
+
+<h4 id="step-8-analyze-loss-distribution">Step 8: Analyze Loss Distribution</h4>
+
+<p>Click the <strong>" Loss Distribution"</strong> tab to see:</p>
+
+<ul>
+<li><strong>Histogram</strong>: Visual distribution of possible losses</li>
+<li><strong>VaR and CVaR lines</strong>: Where the thresholds are</li>
+<li><strong>Tail risk</strong>: How bad the worst cases can get</li>
+</ul>
+
+<p><strong>This helps you:</strong><br />
+- Visualize the full range of outcomes<br />
+- See if risk is symmetric or skewed<br />
+- Understand probability of extreme events</p>
+
+<hr />
+
+<h2 id="understanding-the-results">Understanding the Results</h2>
+
+<h3 id="real-world-example-walkthrough">Real-World Example Walkthrough</h3>
+
+<p>Let's walk through a complete example:</p>
+
+<h4 id="the-situation">The Situation</h4>
+
+<p><strong>Forecast Team submitted:</strong><br />
+- Tomorrow's demand: 100 MW (expected)<br />
+- Solar will produce: 20 MW (expected)<br />
+- Wind will produce: 30 MW (expected)<br />
+- You already sold forward: 50 MW<br />
+- <strong>Net position: -50 MW</strong> (you're SHORT!)</p>
+
+<h4 id="seres-analysis">SERE's Analysis</h4>
+
+<p>After running 10,000 scenarios:</p>
+
+<pre><code> RISK STATE: ACTION
+Expected Loss: €1,250
+VaR (95%): €4,200
+CVaR (95%): €6,800
+</code></pre>
+
+<p><strong>Translation:</strong><br />
+- Orange "ACTION" state = You need to act!<br />
+- On average, this shortage will cost €1,250<br />
+- 95% of the time, losses stay under €4,200<br />
+- In worst case (5%), you lose €6,800</p>
+
+<h4 id="seres-recommendation">SERE's Recommendation</h4>
+
+<pre><code>1. Intraday Purchase: 35 MW @ €150/MWh
+ Cost: €5,250
+ CVaR Reduction: €4,500
+ Net Benefit: -€750 (costs more but necessary!)
+</code></pre>
+
+<h4 id="your-decision">Your Decision</h4>
+
+<p><strong>Option A: Follow the recommendation</strong><br />
+- You buy 35 MW now at €150/MWh<br />
+- Cost: €5,250<br />
+- <strong>But</strong> this prevents potential €6,800 loss<br />
+- Net: You pay €5,250 to avoid €6,800 risk<br />
+- <strong>Effective savings: €1,550</strong> + you sleep better!</p>
+
+<p><strong>Option B: Ignore and gamble</strong><br />
+- Don't buy now, wait and see<br />
+- <strong>If you're lucky</strong>: Wind/solar overperform, you're fine<br />
+- <strong>If unlucky</strong>: You pay ReBAP+ penalty (€300/MWh) on shortage<br />
+- Potential loss: Up to €6,800<br />
+- <strong>High risk!</strong></p>
+
+<p><strong>Best practice</strong>: Follow ACTION and CRITICAL recommendations. You can skip WATCH and HOLD actions.</p>
+
+<hr />
+
+<h2 id="common-terms-explained">Common Terms Explained</h2>
+
+<h3 id="energy-terms">Energy Terms</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Term</th>
+  <th>Plain English</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>MW (Megawatt)</strong></td>
+  <td>Unit of power</td>
+  <td>Your solar farm produces 20 MW</td>
+</tr>
+<tr>
+  <td><strong>MWh (Megawatt-hour)</strong></td>
+  <td>Energy over 1 hour</td>
+  <td>20 MW running for 1 hour = 20 MWh</td>
+</tr>
+<tr>
+  <td><strong>Day-Ahead Market</strong></td>
+  <td>Tomorrow's power market</td>
+  <td>You buy power today for tomorrow</td>
+</tr>
+<tr>
+  <td><strong>Intraday Market</strong></td>
+  <td>Same-day power market</td>
+  <td>You buy power today for today (more expensive)</td>
+</tr>
+<tr>
+  <td><strong>Hedge Position</strong></td>
+  <td>Your existing contracts</td>
+  <td>You already committed to deliver 50 MW</td>
+</tr>
+<tr>
+  <td><strong>Imbalance</strong></td>
+  <td>Difference between plan and reality</td>
+  <td>You delivered 48 MW but promised 50 MW = -2 MW imbalance</td>
+</tr>
+<tr>
+  <td><strong>ReBAP</strong></td>
+  <td>Penalty for imbalances</td>
+  <td>Regulatory imbalance pricing (fines for mistakes)</td>
+</tr>
+<tr>
+  <td><strong>PV (Photovoltaic)</strong></td>
+  <td>Solar panels</td>
+  <td>Panels that convert sunlight to electricity</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="risk-terms">Risk Terms</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Term</th>
+  <th>Plain English</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>VaR (Value at Risk)</strong></td>
+  <td>Normal worst-case loss</td>
+  <td>"95% of the time, losses won't exceed €5,000"</td>
+</tr>
+<tr>
+  <td><strong>CVaR (Conditional VaR)</strong></td>
+  <td>Extreme worst-case loss</td>
+  <td>"In really bad scenarios (worst 5%), average loss is €7,500"</td>
+</tr>
+<tr>
+  <td><strong>Expected Loss</strong></td>
+  <td>Average loss</td>
+  <td>"On average, you'll lose €1,000"</td>
+</tr>
+<tr>
+  <td><strong>Monte Carlo Simulation</strong></td>
+  <td>Testing 10,000 "what if" scenarios</td>
+  <td>Like running 10,000 different weather forecasts</td>
+</tr>
+<tr>
+  <td><strong>Confidence Level</strong></td>
+  <td>How certain you are</td>
+  <td>95% confidence = "Very sure"</td>
+</tr>
+<tr>
+  <td><strong>P10/P50/P90</strong></td>
+  <td>Percentile forecasts</td>
+  <td>P50 = middle estimate, P10 = pessimistic, P90 = optimistic</td>
+</tr>
+<tr>
+  <td><strong>Correlation</strong></td>
+  <td>How things move together</td>
+  <td>Solar and demand: hot day = more sun + more AC use</td>
+</tr>
+<tr>
+  <td><strong>Tail Risk</strong></td>
+  <td>Rare but severe events</td>
+  <td>The worst 5% of outcomes</td>
+</tr>
+<tr>
+  <td><strong>Risk Appetite</strong></td>
+  <td>How much risk you accept</td>
+  <td>"We can tolerate up to €10,000 CVaR"</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="action-terms">Action Terms</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Term</th>
+  <th>Plain English</th>
+  <th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Mitigation</strong></td>
+  <td>Reducing risk</td>
+  <td>Taking action to lower potential losses</td>
+</tr>
+<tr>
+  <td><strong>Flexibility</strong></td>
+  <td>Asking customers to reduce usage</td>
+  <td>During peak prices or shortages</td>
+</tr>
+<tr>
+  <td><strong>Curtailment</strong></td>
+  <td>Shutting off non-essential loads</td>
+  <td>Emergency situations only</td>
+</tr>
+<tr>
+  <td><strong>Storage Charging</strong></td>
+  <td>Putting power into batteries</td>
+  <td>When prices are low</td>
+</tr>
+<tr>
+  <td><strong>Storage Discharging</strong></td>
+  <td>Using battery power</td>
+  <td>When prices are high</td>
+</tr>
+<tr>
+  <td><strong>Hedge Adjustment</strong></td>
+  <td>Changing forward contracts</td>
+  <td>To lock in better prices</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+<h3 id="general-questions">General Questions</h3>
+
+<p><strong>Q: Do I need to be a programmer or mathematician to use SERE?</strong><br />
+A: No! SERE is designed for business users. If you can use Excel, you can use SERE.</p>
+
+<p><strong>Q: How long does it take to learn SERE?</strong><br />
+A: Most users are productive within 1-2 hours. Mastery takes 1-2 weeks of daily use.</p>
+
+<p><strong>Q: Can I break something or cause real trades?</strong><br />
+A: No! SERE is a decision support tool. It recommends actions but never executes trades automatically.</p>
+
+<p><strong>Q: How accurate is SERE?</strong><br />
+A: SERE is as accurate as your input forecasts. Garbage in = garbage out. Good forecasts = good decisions.</p>
+
+<h3 id="forecast-team-questions">Forecast Team Questions</h3>
+
+<p><strong>Q: What if I don't have P10/P90 forecasts?</strong><br />
+A: Use simple rules:<br />
+- P10 = P50 - 15%<br />
+- P90 = P50 + 15%<br />
+- Adjust based on uncertainty (more uncertain = wider range)</p>
+
+<p><strong>Q: How do I estimate market prices?</strong><br />
+A: Use recent market data:<br />
+- Day-Ahead: Check official exchange results<br />
+- Intraday: Use recent trades ±10€<br />
+- ReBAP: Use regulatory penalty rates</p>
+
+<p><strong>Q: What if my forecast is wrong?</strong><br />
+A: That's normal! No forecast is perfect. SERE accounts for uncertainty. Just submit your best estimate.</p>
+
+<p><strong>Q: Can I update my forecast after submission?</strong><br />
+A: Yes! Just submit a new forecast. It will overwrite the previous one.</p>
+
+<p><strong>Q: How often should I submit forecasts?</strong><br />
+A: Typically once per day (for next day). More often if conditions change dramatically.</p>
+
+<h3 id="management-questions">Management Questions</h3>
+
+<p><strong>Q: Should I always follow SERE's recommendations?</strong><br />
+A: Follow ACTION and CRITICAL recommendations. WATCH and HOLD are informational.</p>
+
+<p><strong>Q: What if recommended action costs more than CVaR reduction?</strong><br />
+A: Sometimes you pay for "insurance." If risk is unacceptable, pay for mitigation even if net benefit is negative.</p>
+
+<p><strong>Q: Can I override SERE's decision?</strong><br />
+A: Yes! You're the final decision maker. Document why you overrode (for compliance).</p>
+
+<p><strong>Q: What does "Manual Override Required" mean?</strong><br />
+A: Situation is too complex or risky for automated recommendation. Human judgment needed.</p>
+
+<p><strong>Q: How do I know if the decision is reliable?</strong><br />
+A: Check "Convergence" percentage:<br />
+- &gt;95% = Reliable<br />
+- 90-95% = Use caution<br />
+- &lt;90% = Don't trust, run again </p>
+
+<p><strong>Q: Why does CVaR matter more than Expected Loss?</strong><br />
+A: Expected Loss = average. CVaR = extreme scenarios. You budget for average but protect against extremes!</p>
+
+<h3 id="technical-questions">Technical Questions</h3>
+
+<p><strong>Q: Why 10,000 scenarios?</strong><br />
+A: More scenarios = more accurate but slower. 10,000 is the sweet spot for accuracy vs. speed.</p>
+
+<p><strong>Q: What is Monte Carlo simulation?</strong><br />
+A: Fancy term for "try thousands of different possibilities and see what happens each time."</p>
+
+<p><strong>Q: Do I need to understand the math?</strong><br />
+A: No! You just need to understand the outputs (CVaR, recommendations, risk state).</p>
+
+<p><strong>Q: What if simulation takes too long?</strong><br />
+A: Reduce scenarios to 5,000 in Settings tab. Slightly less accurate but faster.</p>
+
+<p><strong>Q: Why are there sometimes no recommended actions?</strong><br />
+A: Risk is already low (HOLD state). No action needed = best action is to do nothing!</p>
+
+<hr />
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
+
+<h4 id="issue-1-cant-submit-forecast">Issue 1: Can't Submit Forecast</h4>
+
+<p><strong>Symptom:</strong> Validation fails with error messages</p>
+
+<p><strong>Solutions:</strong><br />
+1. Check P10 ≤ P50 ≤ P90 ordering (numbers must increase)<br />
+2. Ensure all generation values are positive (no negatives)<br />
+3. Check that uncertainty isn't too large (P90 - P10 shouldn't be huge)<br />
+4. Make sure all required fields are filled</p>
+
+<h4 id="issue-2-no-submit-button-after-validation">Issue 2: No Submit Button After Validation</h4>
+
+<p><strong>Symptom:</strong> Clicked Validate, but no Submit button appears</p>
+
+<p><strong>Solutions:</strong><br />
+1. <strong>Refresh the page</strong> (press F5)<br />
+2. Check if validation actually passed (green checkmark?)<br />
+3. Look below the validation message - button might be there<br />
+4. Try validating again</p>
+
+<h4 id="issue-3-forecast-not-appearing-in-management-view">Issue 3: Forecast Not Appearing in Management View</h4>
+
+<p><strong>Symptom:</strong> Management sees "No forecast available" after Forecast Team submitted</p>
+
+<p><strong>Solutions:</strong><br />
+1. <strong>Use " Switch Role" button</strong> instead of "Logout"<br />
+ - Logout clears data!<br />
+ - Switch Role keeps data!<br />
+2. Make sure you clicked "Submit Forecast" (not just Validate)<br />
+3. Refresh the browser page<br />
+4. Check you're in the same browser tab/session</p>
+
+<h4 id="issue-4-decision-engine-runs-but-shows-no-actions">Issue 4: Decision Engine Runs But Shows No Actions</h4>
+
+<p><strong>Symptom:</strong> Execution completes but "No actions recommended"</p>
+
+<p><strong>Solutions:</strong><br />
+- This is NORMAL for HOLD state!<br />
+- If risk is low, no action is needed<br />
+- Check Risk State - if it says HOLD, you're good<br />
+- Look at CVaR - if it's below your risk limit, no action needed</p>
+
+<h4 id="issue-5-cvar-seems-too-high">Issue 5: CVaR Seems Too High</h4>
+
+<p><strong>Symptom:</strong> CVaR is €50,000+ and seems unrealistic</p>
+
+<p><strong>Solutions:</strong><br />
+1. Check your price inputs (did you accidentally enter 3000 instead of 300?)<br />
+2. Check your demand/generation forecasts (did you enter GW instead of MW?)<br />
+3. Review P10/P90 spread (too wide = inflated risk)<br />
+4. Adjust correlations in Advanced settings</p>
+
+<h4 id="issue-6-convergence-below-90">Issue 6: Convergence Below 90%</h4>
+
+<p><strong>Symptom:</strong> "Convergence: 85% Low reliability"</p>
+
+<p><strong>Solutions:</strong><br />
+1. Increase scenarios to 20,000 in Settings tab<br />
+2. Wait a bit longer (give it 20-30 seconds)<br />
+3. Check if inputs are extreme (very large numbers can cause instability)<br />
+4. If still low, contact system administrator</p>
+
+<h4 id="issue-7-browser-freezes-during-execution">Issue 7: Browser Freezes During Execution</h4>
+
+<p><strong>Symptom:</strong> Screen freezes when clicking "Execute"</p>
+
+<p><strong>Solutions:</strong><br />
+1. <strong>Wait!</strong> Simulation takes 5-15 seconds - it's working<br />
+2. Look for spinning wheel or "Running..." message<br />
+3. Don't click multiple times (patience!)<br />
+4. If frozen for &gt;60 seconds, refresh page and try again</p>
+
+<h4 id="issue-8-cant-see-charts-or-visualizations">Issue 8: Can't See Charts or Visualizations</h4>
+
+<p><strong>Symptom:</strong> Empty boxes where charts should be</p>
+
+<p><strong>Solutions:</strong><br />
+1. Scroll down - charts might be below the fold<br />
+2. Refresh page (F5)<br />
+3. Check internet connection (charts need Plotly library)<br />
+4. Try a different browser (Chrome recommended)<br />
+5. Disable ad blockers (they sometimes block chart libraries)</p>
+
+<h4 id="issue-9-lost-my-submitted-forecast">Issue 9: Lost My Submitted Forecast</h4>
+
+<p><strong>Symptom:</strong> Data disappeared after switching roles</p>
+
+<p><strong>Solutions:</strong><br />
+- Use "Switch Role" not "Logout"<br />
+- Logout clears everything (by design)<br />
+- Prevention: Always use Switch Role to keep data in session</p>
+
+<h4 id="issue-10-demo-data-button-not-working">Issue 10: Demo Data Button Not Working</h4>
+
+<p><strong>Symptom:</strong> Click "Load Demo Data" but nothing happens</p>
+
+<p><strong>Solutions:</strong><br />
+1. Click once and wait (don't click multiple times)<br />
+2. Check if data appeared in the summary cards above<br />
+3. Refresh page and try again<br />
+4. If still not working, contact support</p>
+
+<hr />
+
+<h2 id="quick-reference-card">Quick Reference Card</h2>
+
+<h3 id="for-forecast-team">For Forecast Team</h3>
+
+<pre><code>LOGIN -&gt; Fill Data -&gt; Validate -&gt; Submit -&gt; Switch Role
+</code></pre>
+
+<p><strong>Don't forget:</strong><br />
+- P10 &lt; P50 &lt; P90 (numbers must increase!)<br />
+- Solar/Wind can't be negative<br />
+- Submit after validation (not just validate!)</p>
+
+<h3 id="for-management">For Management</h3>
+
+<pre><code>LOGIN -&gt; Check Forecast -&gt; Execute -&gt; Review -&gt; Decide -&gt; Act
+</code></pre>
+
+<p><strong>Key rules:</strong><br />
+- CRITICAL = Act immediately<br />
+- ACTION = Act soon<br />
+- WATCH = Monitor<br />
+- HOLD = Do nothing</p>
+
+<p><strong>Decision criteria:</strong><br />
+- Positive Net Benefit -> Consider acting<br />
+- Negative Net Benefit -> Only act if risk is unacceptable<br />
+- CVaR &gt; Risk Limit -> MUST act</p>
+
+<h3 id="risk-states-cheat-sheet">Risk States Cheat Sheet</h3>
+
+<table>
+<thead>
+<tr>
+  <th>State</th>
+  <th>Color</th>
+  <th>Threshold</th>
+  <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>HOLD</td>
+  <td>Green</td>
+  <td>CVaR &lt; €1,000</td>
+  <td>None</td>
+</tr>
+<tr>
+  <td>WATCH</td>
+  <td>Yellow</td>
+  <td>CVaR €1,000-€3,000</td>
+  <td>Monitor</td>
+</tr>
+<tr>
+  <td>ACTION</td>
+  <td>Orange</td>
+  <td>CVaR €3,000-€5,000</td>
+  <td>Mitigate</td>
+</tr>
+<tr>
+  <td>CRITICAL</td>
+  <td>Red</td>
+  <td>CVaR &gt; €5,000</td>
+  <td>Emergency action</td>
+</tr>
+</tbody>
+</table>
+
+<p><em>(Your company's thresholds may differ)</em></p>
+
+<hr />
+
+<h2 id="getting-help">Getting Help</h2>
+
+<h3 id="if-youre-stuck">If You're Stuck</h3>
+
+<ol>
+<li><strong>Check this manual</strong> - Search for your issue</li>
+<li><strong>Check FAQ section</strong> - Common questions answered</li>
+<li><strong>Check Troubleshooting</strong> - Common fixes listed</li>
+<li><strong>Ask a colleague</strong> - Someone may have seen it before</li>
+<li><strong>Contact IT support</strong> - They can access logs and debug</li>
+</ol>
+
+<h3 id="feedback-and-improvements">Feedback and Improvements</h3>
+
+<p>If you find:<br />
+- Bugs or errors<br />
+- Ideas for improvements<br />
+- Unclear instructions in this manual<br />
+- Confusing features</p>
+
+<p><strong>Please report them!</strong> SERE is continuously improving.</p>
+
+<hr />
+
+<h2 id="appendix-mathematical-details-optional">Appendix: Mathematical Details (Optional)</h2>
+
+<p><em>This section is for advanced users who want to understand the underlying math.</em></p>
+
+<h3 id="monte-carlo-simulation">Monte Carlo Simulation</h3>
+
+<p>SERE generates 10,000+ random scenarios using:</p>
+
+<pre><code>Demand_scenario = Normal(μ=P50, σ derived from P10-P90)
+PV_scenario = Normal(μ=P50, σ derived from P10-P90)
+Wind_scenario = Normal(μ=P50, σ derived from P10-P90)
+
+With correlation matrix:
+ Demand PV Wind
+Demand 1.0 ρ_d,pv ρ_d,w
+PV ρ_d,pv 1.0 ρ_pv,w
+Wind ρ_d,w ρ_pv,w 1.0
+</code></pre>
+
+<h3 id="cvar-calculation">CVaR Calculation</h3>
+
+<pre><code>CVaR(95%) = E[Loss | Loss &gt; VaR(95%)]
+ = Mean of worst 5% of scenarios
+</code></pre>
+
+<h3 id="mitigation-optimization">Mitigation Optimization</h3>
+
+<p>For each action type, SERE solves:</p>
+
+<pre><code>Minimize: CVaR_post_mitigation + λ × Cost
+Subject to: Operational constraints
+ Market limits
+ Physical feasibility
+</code></pre>
+
+<h3 id="risk-state-thresholds">Risk State Thresholds</h3>
+
+<pre><code>HOLD: CVaR &lt; Threshold_1
+WATCH: Threshold_1 ≤ CVaR &lt; Threshold_2
+ACTION: Threshold_2 ≤ CVaR &lt; Threshold_3
+CRITICAL: CVaR ≥ Threshold_3
+</code></pre>
+
+<hr />
+
+<h2 id="summary-key-takeaways">Summary: Key Takeaways</h2>
+
+<h3 id="for-everyone">For Everyone</h3>
+
+<p><strong>SERE is a decision support tool</strong> - It recommends, you decide<br />
+ <strong>No math required</strong> - Just understand the outputs<br />
+ <strong>Better safe than sorry</strong> - Follow CRITICAL and ACTION recommendations<br />
+ <strong>Trust your judgment</strong> - You can override any recommendation</p>
+
+<h3 id="for-forecast-team-2">For Forecast Team</h3>
+
+<p><strong>Quality forecasts = Quality decisions</strong> - Take time to be accurate<br />
+ <strong>Uncertainty is OK</strong> - Wide ranges (P10-P90) are better than false precision<br />
+ <strong>Submit daily</strong> - Fresh forecasts lead to better decisions</p>
+
+<h3 id="for-management-2">For Management</h3>
+
+<p><strong>CVaR is your north star</strong> - Focus on tail risk, not just average<br />
+ <strong>Act on ACTION and CRITICAL</strong> - Don't ignore orange and red<br />
+ <strong>Document overrides</strong> - If you don't follow recommendations, write why</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>SERE transforms complex risk calculations into simple, actionable decisions. By following this manual, you'll be able to:</p>
+
+<ul>
+<li>Submit accurate probabilistic forecasts</li>
+<li>Execute the decision engine confidently</li>
+<li>Interpret risk metrics correctly</li>
+<li>Make informed mitigation decisions</li>
+<li>Communicate risk to stakeholders</li>
+</ul>
+
+<p><strong>Remember:</strong> SERE is a tool to help you make better decisions, not replace your judgment. Use it wisely, trust the science, but always apply your domain expertise and business judgment.</p>
+
+<p><strong>Welcome to smarter risk management!</strong> </p>
+
+<hr />
+
+<p><strong>Document Version:</strong> 1.0<br />
+<strong>Last Updated:</strong> January 2026<br />
+<strong>Next Review:</strong> March 2026</p>
+
+<p><strong>Questions?</strong> Contact your system administrator or energy risk management team.</p>
+
+<hr />
+
+    
+    <div class="document-footer">
+        <p><strong>SERE - Sustainable Exergy Risk Engine</strong></p>
+        <p>User Manual Version 1.0 | January 2026</p>
+        <p>Confidential - For Internal Use Only</p>
+        <p>&copy; 2026 All Rights Reserved</p>
+    </div>
+</body>
+</html>
